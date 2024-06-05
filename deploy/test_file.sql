@@ -20,6 +20,6 @@ insert into hr_db.hr_data.employee values
 (101,"Neena","Kochhar","NKOCHHAR",5151234568,"AD_VP",17000,null,100,90), 
 (102,"Lex","De Haan","LDEHAAN",5151234569,"AD_VP",17000,null,100,90),
 (103,"Alexander","Hunold","AHUNOLD",5904234567,"IT_PROG",9000,null,102,60),
-(104,"Bruce","Ernst","BERNST",5904234568,"IT_PROG",6000,null,103,60)
-(105,"Blake","Joe","BJOE",8904234568,"IT_PROG",7000,null,103,60)
+(104,"Bruce","Ernst","BERNST",5904234568,"IT_PROG",6000,null,103,60),
+(105,"Blake","Joe","BJOE",8904234568,"IT_PROG",7000,null,103,60),
 (106,"Nick","Merry","NMERRY",8904234545,"IT_PROG",5000,null,103,60);
