@@ -12,10 +12,11 @@ on:
     workflow_dispatch:
       
 jobs:
-  run-snowflake-query:
+  deploy-snowflake-changes-job:
     runs-on: ubuntu-latest
 
     steps:
+      #checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout repository
         uses: actions/checkout@v2
 
