@@ -1,0 +1,36 @@
+name: Snowflake Schema Change
+
+# Allows you to run this workflow manually from the Actions web interface
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy-snowflake-changes-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.8.x
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+
+      - name: Run schemachange
+        env:
+          SF_USERNAME: ${{ secrets.SF_USERNAME }}
+          SF_PASSWORD: ${{ secrets.SF_PASSWORD }}
+          SF_ACCOUNTNAME: ${{ secrets.SF_ACCOUNTNAME }}
+          SF_ROLENAME: ${{ secrets.SF_ROLENAME }}
+          SF_WAREHOUSE: ${{ secrets.SF_WAREHOUSE }}
+          SF_DBNAME: ${{ secrets.SF_DBNAME }}
+        run: |
+          echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
+          python --version
+          echo "Step 1: Installing schemachange"
+          pip install schemachange
+
+          echo "Step 2: Running schemachange"
+          schemachange -f $GITHUB_WORKSPACE/deploy -a $SF_ACCOUNTNAME -u $SF_USERNAME -r $SF_ROLENAME -w $SF_WAREHOUSE -d $SF_DBNAME -c $SF_DBNAME.SCHEMACHANGE.CHANGE_HISTORY --create-change-history-table
